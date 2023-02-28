@@ -1,15 +1,25 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: Replace Variables in File
+description: This workflow replaces variables in a file using a bash script.
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  github_vars:
+    description: 'The JSON with the variables to replace in the file.'
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  file_path:
+    description: 'The path of the file to be updated.'
+    required: true
+  prefix:
+    description: 'The prefix used for each variable in the file.'
+    required: true
+  suffix:
+    description: 'The suffix used for each variable in the file.'
+    required: true
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'docker://bash:5.1'
+  entrypoint: '/bin/bash'
   args:
-    - ${{ inputs.who-to-greet }}
+    - './script_name.sh'
+    - '${{inputs.github_vars}}'
+    - '${{inputs.file_path}}'
+    - '${{inputs.prefix}}'
+    - '${{inputs.suffix}}'
