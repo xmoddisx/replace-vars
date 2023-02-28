@@ -16,10 +16,8 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  #entrypoint: 'entrypoint.sh'
   args:
-   # - './script_name.sh'
-    - '${{inputs.github_vars}}'
-    - '${{inputs.file_path}}'
-    - '${{inputs.prefix}}'
-    - '${{inputs.suffix}}'
+    - ${{ inputs.github_vars }}
+    - ${{ inputs.file_path }}
+    - ${{ inputs.prefix }}
+    - ${{ inputs.suffix }}
