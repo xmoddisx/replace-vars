@@ -12,9 +12,11 @@ This GitHub Action replaces variables in a file using a bash script.
 ## Example Usage
 
 ```yaml
-uses: your-username/replace-variables-action@v1
+uses: xmoddisx/replace-variables-action@v1
+env:
+  GITHUB_VARS: ${{ toJson(vars) }}
 with:
-  github_vars: ${{ secrets.GITHUB_VARS }}
+  github_vars: ${{ env.GITHUB_VARS }}
   file_path: 'path/to/file.txt'
   prefix: '${{ vars.'
   suffix: '}}'

@@ -17,3 +17,6 @@ done
 
 # Sobrescribimos el contenido del archivo con el contenido actualizado
 echo "$FILE_CONTENTS" > $FILE_PATH
+
+echo "[INFO]  ARCHIVE:"
+cat archivo.txt
